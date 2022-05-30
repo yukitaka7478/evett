@@ -1,0 +1,48 @@
+a {
+  text-decoration: none;
+}
+
+.main {
+  background: #f8f8f8;
+}
+/* 商品一覧 */
+
+.evett-contents {
+  height: 80vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10vh 0;
+}
+
+.evett-lists {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.evett-lists>.list {
+  width: 37vh;
+  padding: 1vw;
+  background-color: #FFF;
+}
+
+.evett-info {
+  background-color: #FFF;
+  color: black;
+  padding: 1vw;
+}
+
+.evett-name {
+  font-size: 2.5vh;
+}
+
+.evett-price {
+  font-size: 1.5vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* //商品一覧 */
