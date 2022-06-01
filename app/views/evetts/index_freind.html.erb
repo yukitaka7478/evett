@@ -4,7 +4,7 @@
   <%# evett一覧 %>
   <div class='evett-contents' >
     <% @evetts.each do |evett| %>
-      <% if evett.share_area_id == 1 %>
+      <% if evett.share_area_id == 2 %>
         <div class='evett_content'>
           <div class='evett_area' >
             <div class='left_content'>
@@ -33,7 +33,7 @@
               </li>
             </ul>
         </div>
-      <% end %>
+        <% end %>
     <% end %>
   </div>
   <%# /evett一覧 %>

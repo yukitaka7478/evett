@@ -1,5 +1,6 @@
 a {
   text-decoration: none;
+  color: black;
 }
 
 .main {
@@ -8,20 +9,24 @@ a {
 /* 商品一覧 */
 
 .evett-contents {
-  height: 80vh;
   background-color: white;
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   padding: 10vh 0;
-  overflow: scroll;
 }
 
 .evett_content {
+  display: flex;
+  width: 70%;
+  margin-top: 20px;
+}
+
+.evett_area {
   background-color: #9ddd88;
   width: 600px;
   height: 100px;
-  margin-top: 20px;
   padding: 15px;
   display: flex;
   justify-content: space-between;
@@ -36,18 +41,36 @@ a {
 .right_content {
   line-height: 40px;
   font-size: 24px;
-  width: 40%;
+  width: 25%;
+  display: flex;
+  align-items: center;
 }
 
-.evett_menu {
+.evett_menus {
   text-align: end;
+  width: 100%;
 }
 
 .evett_payment_btn {
   background-color: red;
   color: #FFF;
-  margin-right: 50px;
   text-align: center;
+}
+
+.evett_menu {
+  width: 60px;
+  text-align: center;
+  font-size: 24px;
+  display: block;
+}
+
+.evett_menu li {
+  display: none;
+}
+
+.evett_menu:hover li {
+  display: block;
+  cursor: pointer;
 }
 
 .evett-lists {
@@ -89,6 +112,7 @@ a {
   right: 32px;
   position: fixed;
   padding: 15px;
+  z-index: 1;
 }
 
 .purchase-btn-text {

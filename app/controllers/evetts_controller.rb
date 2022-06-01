@@ -1,9 +1,15 @@
 class EvettsController < ApplicationController
   before_action :authenticate_user!, only: :new
+  before_action :index_evett_all, only: [:index, :index_freind, :index_user]
   #  before_action :unless_user_id, only: [:edit, :destroy]
 
   def index
-    @evetts = Evett.all.order('created_at DESC')
+  end
+
+  def index_freind
+  end
+
+  def index_user
   end
 
   def new
@@ -27,5 +33,9 @@ class EvettsController < ApplicationController
 
   def unless_user_id
     redirect_to root_path unless current_user.id == @evett.user_id
+  end
+
+  def index_evett_all
+    @evetts = Evett.all.order('created_at DESC')
   end
 end
