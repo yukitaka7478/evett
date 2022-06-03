@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.top-page-header {
+.header {
   width: 100vw;
   height: 13vh;
   padding: 1.5vh 7vw;
@@ -22,7 +22,6 @@
 }
 
 .nav {
-  font-size: 18px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -45,6 +44,7 @@
 .lists-right {
   display: flex;
   list-style: none;
+  font-size: 18px;
 }
 
 .user-nickname {

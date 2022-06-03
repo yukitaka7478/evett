@@ -1,0 +1,35 @@
+<% if evett.share_area_id == 3 && evett.user.id != current_user.id %>
+<% else %>
+  <li class='evett_content'>
+    <%= link_to evett_path(evett.id) do %>
+      <div class='evett_area' >
+        <div class='left_content'>
+          <div class='evett_name'>
+            <h2><%= evett.name %></h2>
+          </div>
+          <div class='evett_price'>
+            <h2>/<%= evett.price %>円</h2>
+          </div>
+        </div>
+        <div class='right_content'>
+          <div class='evett_menus'>
+            <h1 id="menu_btn">:</h1>
+            <div class='evett_payment_btn'>
+              <h2>入金</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% if evett.user_id == current_user.id %>
+      <ul class="evett_menu">
+        <li>
+          <%= link_to "編集", root_path %>
+        </li>
+        <li>
+          <%= link_to "削除", root_path %>
+        </li>
+      </ul>
+    <% end %>
+  </li>
+ <% end %>

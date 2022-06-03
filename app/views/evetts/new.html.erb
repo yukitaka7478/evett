@@ -35,19 +35,7 @@
         <div class="form-area">
           <div class='form-text-wrap'>
             <label class="form-text">目標日</label>
-          </div>
-          <div class='input-birth-wrap'>
-            <%= raw sprintf(
-                        f.date_select(
-                          :birth_date,
-                          class:'select-birth',
-                          id:"birth-date",
-                          use_month_numbers: true,
-                          prompt:'--',
-                          start_year: Time.now.year,
-                          end_year: (Time.now.year + 20 ),
-                          date_separator: '%s'),
-                        "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+            <%= f.date_field(:limit_date, value: Time.now.strftime("2022Y-1m-1d")) %>
           </div>
         </div>
       </div>
