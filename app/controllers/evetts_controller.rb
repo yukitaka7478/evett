@@ -1,7 +1,6 @@
 class EvettsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :edit, :show]
-  before_action :evett_find, only: [:show, :edit, :update]
-  before_action :unless_user_id, only: [:edit, :destroy]
+  before_action :evett_find, only: [:show, :edit, :update, :destroy]
 
   def index
     @evetts_all = Evett.where(share_area_id: 1).order('created_at DESC')
@@ -36,14 +35,15 @@ class EvettsController < ApplicationController
     end
   end
 
+  def destroy
+    @evett.destroy
+    redirect_to root_path
+  end
+
   private
 
   def evett_params
     params.require(:evett).permit(:name, :text, :price, :limit_date, :share_area_id).merge(user_id: current_user.id)
-  end
-
-  def unless_user_id
-    redirect_to root_path unless @evett.user_id == current_user.id
   end
 
   def evett_find
