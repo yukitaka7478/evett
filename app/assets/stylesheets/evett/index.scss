@@ -7,20 +7,30 @@ a {
   background: #f8f8f8;
 }
 /* 商品一覧 */
-
-.evett-contents {
-  background-color: white;
+.active-evett {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: flex-end;
+}
+
+.not-active-evett {
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.evett-contents {
+  background-color: white;
   padding: 10vh 0;
+  min-height: 70vh;
 }
 
 .evett_content {
   display: flex;
   width: 70%;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .evett_area {
@@ -46,6 +56,14 @@ a {
   align-items: center;
 }
 
+.menu_btn {
+  align-self: flex-start;
+  text-align: end;
+  width: 100%;
+  font-size: large;
+  font-weight: bold;
+}
+
 .evett_menus {
   text-align: end;
   width: 100%;
@@ -60,7 +78,7 @@ a {
 .evett_menu {
   width: 60px;
   text-align: center;
-  font-size: 24px;
+  font-size: 22px;
   display: block;
 }
 
@@ -96,10 +114,10 @@ a {
   font-size: 2.5vh;
 }
 
-.evett-price {
-  font-size: 1.5vh;
+.evett_price {
   display: flex;
   justify-content: space-between;
+  padding-left: 30px;
 }
 
 /* //商品一覧 */

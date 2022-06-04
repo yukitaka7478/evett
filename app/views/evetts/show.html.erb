@@ -1,0 +1,43 @@
+<%= render "shared/second-header" %>
+<div class="main">
+  <%# evettの概要 %>
+  <div class='evett_show' >
+    <div class='evett_box' >
+      <div class='evett_left'>
+        <div class='evett_name'>
+          <p><%= @evett.name %></p>
+          <h4>投稿者：<%= @evett.user.nickname %></h4>
+        </div>
+        <div class='evett_text'>
+          <h2><%= @evett.text %></h2>
+        </div>
+        <div class='evett_limit_date'>
+          <h4>目標日：<%= @evett.limit_date %></h4>
+        </div>
+        <div class='evett_price_box'>
+          <h2>/<%= @evett.price %>円</h2>
+        </div>
+      </div>
+      <div class='evett_right'>
+        <div class='right_menu'>
+          <h1 class="menu_btn">:</h1>
+          <div class='evett-red-btn'>
+            <h2>入金</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% if @evett.user_id == current_user.id %>
+    <ul class="menu_tag">
+      <li>
+        <%= link_to "編集", "#" %>
+      </li>
+      <li>
+        <%= link_to "削除", "#" %>
+      </li>
+    </ul>
+    <% end %>
+    <%# /evettの概要 %>
+  </div>
+</div>
+<%= render "shared/second-footer" %>

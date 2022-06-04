@@ -1,0 +1,124 @@
+/* 商品の概要 */
+
+.evett_show {
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5vh 0 5vh 7vh;
+}
+
+.evett_box {
+  background-color: #9ddd88;
+  width: 60vw;
+  height: 70vh;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.evett_left {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.evett_name {
+  width: 100%;
+  font-weight: bold;
+  padding-left: 30px;
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.evett_name p {
+  width: 50%;
+  font-size: 25px;
+}
+
+.evett_name h4 {
+  width: 50%;
+  text-align: end;
+  font-size: 20px;
+}
+
+.evett_text {
+  width: 110%;
+  height: 50%;
+  font-size: 20px;
+  align-self: center;
+  background-color: rgb(245, 248, 156);
+  border: 3px solid black;
+  padding: 30px;
+}
+
+.evett_limit_date {
+  width: 100%;
+  font-size: 20px;
+  align-self: flex-end;
+  padding-left: 30px;
+}
+
+.evett_price_box {
+  width: 100%;
+  margin: 25px 0px;
+  font-size: 30px;
+  align-self: flex-end;
+  padding-left: 30px;
+}
+
+.evett_right {
+  width: 30%;
+  height: 100%;
+}
+
+.right_menu {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.evett-red-btn {
+  text-align: center;
+  background-color: #ea352d;
+  font-size: 24px;
+  width: 100%;
+  font-weight: bold;
+  color: #FFF;
+  align-self: flex-end;
+}
+
+.menu_tag {
+  padding-top: 30px;
+  width: 60px;
+  height: 200px;
+  text-align: center;
+  font-size: 22px;
+  display: block;
+  align-self: flex-start;
+}
+
+.menu_tag li {
+  display: none;
+}
+
+.menu_tag:hover li {
+  display: block;
+  cursor: pointer;
+}
+
+.or-text {
+  font-size: 20px;
+}
+
+.evett-destroy {
+  background-color: lightgray;
+  text-align: center;
+  font-size: 24px;
+  color: black;
+  margin: 20px 0px;
+  padding: 2vh 10vw;
+}
+/* /商品の概要 */

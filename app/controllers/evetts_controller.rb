@@ -1,15 +1,11 @@
 class EvettsController < ApplicationController
-  before_action :authenticate_user!, only: :new
-  before_action :index_evett_all, only: [:index, :index_freind, :index_user]
+  before_action :authenticate_user!, only: [:index, :new]
   #  before_action :unless_user_id, only: [:edit, :destroy]
 
   def index
-  end
-
-  def index_freind
-  end
-
-  def index_user
+    @evetts_all = Evett.where(share_area_id: 1).order('created_at DESC')
+    @evetts_friend = Evett.where(share_area_id: 2).order('created_at DESC')
+    @evetts_only = Evett.where(share_area_id: 3).order('created_at DESC')
   end
 
   def new
@@ -25,6 +21,10 @@ class EvettsController < ApplicationController
     end
   end
 
+  def show
+    @evett = Evett.find(params[:id])
+  end
+
   private
 
   def evett_params
@@ -33,9 +33,5 @@ class EvettsController < ApplicationController
 
   def unless_user_id
     redirect_to root_path unless current_user.id == @evett.user_id
-  end
-
-  def index_evett_all
-    @evetts = Evett.all.order('created_at DESC')
   end
 end

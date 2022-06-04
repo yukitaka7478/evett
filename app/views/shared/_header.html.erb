@@ -1,14 +1,14 @@
 <%# CSS・・・assets/stylesheets/shared/header.css %>
-<header class='top-page-header'>
+<header class='header'>
   <div class='logo'>
     <%= link_to 'Evett', root_path %>
   </div>
   <div class='nav'>
     <ul class='lists-left'>
-      <li><%= link_to'誰でも', root_path, class: "list-name", id:"all_user_tag" %></li>
+      <li><%= link_to'誰でも', root_path, class: "list-name", id:"active-tag" %></li>
       <% if user_signed_in? %>
-        <li><%= link_to '友達', evetts_index_freind_path, class: "list-name", id:"friend_tag" %></li>
-        <li><%= link_to current_user.nickname, evetts_index_user_path, class: "list-name", id:"only_user_tag" %></li>
+        <li><%= link_to '友達', root_path, class: "list-name" %></li>
+        <li><%= link_to current_user.nickname, root_path, class: "list-name" %></li>
       <% end %>
     </ul>
     <ul class='lists-right'>
