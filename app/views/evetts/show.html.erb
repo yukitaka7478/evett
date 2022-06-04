@@ -30,7 +30,7 @@
     <% if @evett.user_id == current_user.id %>
     <ul class="menu_tag">
       <li>
-        <%= link_to "編集", edit_evett_path(@evett.id), method: :get  %>
+        <%= link_to "編集", edit_evett_path(@evett.id), method: :get %>
       </li>
       <li>
         <%= link_to "削除", evett_path(@evett.id), method: :delete %>
