@@ -22,6 +22,7 @@ class EvettsController < ApplicationController
   end
 
   def show
+    @payment = Payment.where(evett_id: @evett.id).sum(:pay)
   end
 
   def edit

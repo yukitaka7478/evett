@@ -9,6 +9,7 @@
   align-items: center;
   flex-direction: column;
   min-width: 500px;
+  padding: 20px 0;
 }
 
 .evetts-sell-header {

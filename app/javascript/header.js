@@ -31,7 +31,15 @@ const header = () => {
         friendTab.setAttribute("style", "display:none;");
         userTab.removeAttribute("style", "display:none;");
         userTab.setAttribute("style", "display:flex;");
-      };      
+      };
+    });
+    list.addEventListener('mouseover', function() {
+      this.setAttribute("style", "box-shadow: 0 10px 25px 0 rgba(5, 5, 5, 0.4);");
+      this.setAttribute("style", "background-color: orange;");
+    });
+    list.addEventListener('mouseout', function() {
+      this.removeAttribute("style", "box-shadow: ;");
+      this.removeAttribute("style", "background-color: orange;");
     });
   });
 };

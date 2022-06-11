@@ -1,90 +1,80 @@
-<div class="evetts-sell-contents">
-  <header class="evetts-sell-header">
-    <%= link_to "evett", root_path %>
-  </header>
-  <div class="evetts-sell-main">
-    <h2 class="evetts-sell-title">evettの情報を入力</h2>
-    <%= form_with model: @evett, local: true do |f| %>
+<div class="main">
+  <div class='transaction-contents'>
+    <div class='logo'><%= link_to "Evett", root_path %></div>
+    <div class='transaction-main'>
+      <h2 class="evetts-sell-title">evettの情報を入力</h2>
+      <%= form_with model: @evett, local: true do |f| %>
 
-    <%= render 'shared/error_messages', model: f.object %>
+      <%= render 'shared/error_messages', model: f.object %>
 
-    <%# evett名とevett説明 %>
-    <div class="new-evetts">
-      <div class="weight-bold-text">
-        evett名
-        <span class="indispensable">必須</span>
-      </div>
-      <%= f.text_area :name, class:"evetts-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
-      <div class="evetts-explain">
+      <%# evett名とevett説明 %>
+      <div class="new-evetts">
         <div class="weight-bold-text">
-          evettの説明
+          evett名
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :text, class:"evetts-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）例）NIKEの最新スニーカーを買う" ,rows:"7" ,maxlength:"1000" %>
-      </div>
-    </div>
-    <%# /evett名とevett説明 %>
-
-    <%# evett詳細について %>
-    <div class="evetts-detail">
-      <div class="form">
-        <div class="weight-bold-text">
-          公開範囲の設定
-        </div>
-        <%= f.collection_select(:share_area_id, ShareArea.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
-        <div class="form-area">
-          <div class='form-text-wrap'>
-            <label class="form-text">目標日</label>
-            <%= f.date_field(:limit_date, value: Time.now.strftime("2022Y-1m-1d")) %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <%# /evett詳細について %>
-
-    <%# 販売価格 %>
-    <div class="sell-price">
-      <div class="weight-bold-text question-text">
-        <span>設定価格<br>(¥300〜9,999,999)</span>
-        <a class="question" href="#">?</a>
-      </div>
-        <div class="price-content">
-          <div class="price-text">
-            <span>価格</span>
+        <%= f.text_area :name, class:"evetts-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+        <div class="evetts-explain">
+          <div class="weight-bold-text">
+            evettの説明
             <span class="indispensable">必須</span>
           </div>
-          <span class="sell-yen">¥</span>
-          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
+          <%= f.text_area :text, class:"evetts-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）例）NIKEの最新スニーカーを買う" ,rows:"7" ,maxlength:"1000" %>
         </div>
-    </div>
-    <%# /販売価格 %>
+      </div>
+      <%# /evett名とevett説明 %>
 
-    <%# 注意書き %>
-    <div class="caution">
-      <p class="sentence">
-        <a href="#">禁止されている出品、</a>
-        <a href="#">行為</a>
-        を必ずご確認ください。
-      </p>
+      <%# evett詳細について %>
+      <div class="evetts-detail">
+        <div class="form">
+          <div class="weight-bold-text">
+            公開範囲の設定
+          </div>
+          <%= f.collection_select(:share_area_id, ShareArea.all, :id, :name, {}, {class:"select-box", id:"item-shipping-fee-status"}) %>
+          <div class="form-area">
+            <div class='form-text-wrap'>
+              <label class="form-text">目標日</label>
+              <%= f.date_field(:limit_date, value: Time.now.strftime("2022Y-1m-1d")) %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%# /evett詳細について %>
+
+      <%# 販売価格 %>
+      <div class="sell-price">
+        <div class="weight-bold-text question-text">
+          <span>設定価格<br>(¥300〜9,999,999)</span>
+          <a class="question" href="#">?</a>
+        </div>
+          <div class="price-content">
+            <div class="price-text">
+              <span>価格</span>
+              <span class="indispensable">必須</span>
+            </div>
+            <span class="sell-yen">¥</span>
+            <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
+          </div>
+      </div>
+      <%# /販売価格 %>
+
+      <%# 注意書き %>
+      <div class="caution">
+        <p class="sentence">
+          <a href="#">禁止されている出品、</a>
+          <a href="#">行為</a>
+          を必ずご確認ください。
+        </p>
+      </div>
+      <%# /注意書き %>
+      <%# 下部ボタン %>
+      <div class="sell-btn-contents">
+        <%= f.submit "投稿する" ,class:"sell-btn" %>
+        <%=link_to 'もどる', root_path, class:"back-btn" %>
+      </div>
+      <%# /下部ボタン %>
     </div>
-    <%# /注意書き %>
-    <%# 下部ボタン %>
-    <div class="sell-btn-contents">
-      <%= f.submit "投稿する" ,class:"sell-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
-    </div>
-    <%# /下部ボタン %>
+    <% end %>
   </div>
-  <% end %>
-
-  <footer class="items-sell-footer">
-    <ul class="menu">
-      <li><a href="#">プライバシーポリシー</a></li>
-      <li><a href="#">evett利用規約</a></li>
-      <li><a href="#">特定商取引に関する表記</a></li>
-    </ul>
-    <p class="inc">
-      ©︎Evett,Inc.
-    </p>
-  </footer>
 </div>
+<%= render "shared/footer" %>

@@ -1,0 +1,90 @@
+<div class="main">
+  <div class='transaction-contents'>
+    <div class='logo'><%= link_to "Evett", root_path %></div>
+    <div class='transaction-main'>
+      <h1 class='transaction-title-text'>
+        入金内容の確認
+      </h1>
+      <%# 購入内容の表示 %>
+      <div class='payment-info'>
+        <div class='payment-content'>
+          <div class='payment-nickname'>
+            <%= @evett.user.nickname %>
+          </div>
+          <div class='payment-evett'>
+            <div class='payment-name'>
+              <%= @evett.name %>
+            </div>
+            <div class='payment-price'>
+              ¥<%= @evett.price %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%# /購入内容の表示 %>
+
+      <%= form_with model: @payment, url: evett_payments_path(@evett.id), id: 'charge-form', class: 'transaction-form-wrap', local: true do |f| %>
+        <%= render 'shared/error_messages', model: f.object %>
+
+      <%# 支払額の表示 %>
+      <div class='payment-input '>
+        <div class='payment-price-input'>
+          <%= f.label :pay, "入金金額" %>
+          <%= f.text_field :pay, class:"price", placeholder:"例)2000" %>
+        </div>
+        <p>*¥300~¥9,999,999まで入金可能です</p>
+      </div>
+      <%# /支払額の表示 %>
+
+      <%# カード情報の入力 %>
+      <% if current_user.card.present? %>
+        <div class="credit-card-message">カードは登録されています</div>
+      <% else %>
+        <div class='credit-card-form' id='payment_page'>
+          <h1 class='info-input-haedline'>
+            クレジットカード情報入力
+          </h1>
+          <div class="form-group">
+            <div class='form-text-wrap'>
+              <label class="form-text">カード情報</label>
+              <span class="indispensable">必須</span>
+            </div>
+            <%= f.text_field :number, class:"input-default", id:"card-number", placeholder:"カード番号(半角英数字)", maxlength:"16" %>
+            <div class='available-card'>
+              <%= image_tag 'card-visa.gif', class: 'card-logo'%>
+              <%= image_tag 'card-mastercard.gif', class: 'card-logo'%>
+              <%= image_tag 'card-jcb.gif', class: 'card-logo'%>
+              <%= image_tag 'card-amex.gif', class: 'card-logo'%>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class='form-text-wrap'>
+              <label class="form-text">有効期限</label>
+              <span class="indispensable">必須</span>
+            </div>
+            <div class='input-expiration-date-wrap'>
+              <%= f.text_area :exp_month, class:"input-expiration-date", id:"card-exp-month", placeholder:"例)3" %>
+              <p>月</p>
+              <%= f.text_area :exp_year, class:"input-expiration-date", id:"card-exp-year", placeholder:"例)23" %>
+              <p>年</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class='form-text-wrap'>
+              <label class="form-text">セキュリティコード</label>
+              <span class="indispensable">必須</span>
+            </div>
+            <%= f.text_field :cvc, class:"input-default", id:"card-cvc", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"4" %>
+          </div>
+        </div>
+      <% end %>
+      <%# /カード情報の入力 %>
+      <div class='payment-btn'>
+        <%= f.submit "購入" ,class:"payment-red-btn", id:"button" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+<%= render "shared/footer" %>

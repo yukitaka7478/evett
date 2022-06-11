@@ -1,46 +1,106 @@
 /* 商品の概要 */
 
 .evett_show {
-  background-color: #f8f8f8;
+  background: #f8f8f8;
   display: flex;
-  align-items: center;
+  margin: 0 20px 0 20px;
   justify-content: center;
-  padding: 5vh 0 5vh 7vh;
 }
 
-.evett_box {
-  background-color: #9ddd88;
-  width: 60vw;
-  height: 70vh;
-  padding: 30px;
-  display: flex;
-  justify-content: space-between;
+ .evett_show_area{
+  background: linear-gradient(red, orange, yellow);
+  width: 70vw;
+  height: 80vh;
+  min-width: 460px;
+  min-height: 480px;
+  border-radius: 200px;
+  padding: 10px 50px;
+  margin-top: 20px;
 }
 
-.evett_left {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
-.evett_name {
-  width: 100%;
-  font-weight: bold;
-  padding-left: 30px;
-  font-size: 25px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.evett_name p {
-  width: 50%;
-  font-size: 25px;
-}
-
-.evett_name h4 {
-  width: 50%;
-  text-align: end;
+.show_content_menu{
   font-size: 20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  background-color: #3cd9d1;
+  padding: 10px 0 0 5px;
+}
+
+.show_content_menu li {
+  display: none;
+}
+
+.show_content_menu li a {
+  color: #f8f8f8;
+}
+
+.show_content_menu:hover li {
+  display: block;
+  cursor: pointer;
+  text-align: center;
+  padding-right: 8px;
+}
+
+.show_main_content {
+  line-height: 50px;
+  font-size: 20px;
+  width: 100%;
+  height: 80%;
+  padding: 15px;
+  color: #FFF;
+}
+
+.evett_show_box {
+  color: #FFF;
+  min-height: 150px;
+  margin-top: 30px;
+}
+
+.evett_show_limit_date{
+  margin-bottom: 50px;
+  font-size: 20px;
+  min-height: 50px;
+}
+
+.evett_show_price_back {
+  text-align: center;
+  border-radius: 20px;
+  width: 100%;
+  position: relative;
+}
+.evett_show_payment_area {
+  display: flex;
+  width: 100%;
+  justify-items: end;
+}
+
+.evett_show_payment_area a {
+  width: 35%;
+  margin-left: 280px;
+}
+
+.evett_show_payment_btn {
+  background-color: red;
+  width: 100%;
+  text-align: center;
+  border-radius: 40px;
+  margin-top: 40px;
+  color: #FFF;
+}
+
+.evett_show_payment_percentage {
+  font-size: 20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  background-color: #3ccace;
+  margin: 70px 0 0 auto;
+}
+
+.evett_show_payment_percentage h2 {
+  text-align: center;
+  margin-top: 15px;
 }
 
 .evett_text {
@@ -54,10 +114,8 @@
 }
 
 .evett_limit_date {
-  width: 100%;
   font-size: 20px;
-  align-self: flex-end;
-  padding-left: 30px;
+  min-height: 50px;
 }
 
 .evett_price_box {
@@ -88,6 +146,13 @@
   font-weight: bold;
   color: #FFF;
   align-self: flex-end;
+}
+
+.menu_btn {
+  align-self: flex-start;
+  width: 100%;
+  font-size: large;
+  font-weight: bold;
 }
 
 .menu_tag {

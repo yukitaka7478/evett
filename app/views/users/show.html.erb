@@ -1,0 +1,141 @@
+<%= render "shared/second-header" %>
+<div class="main">
+  <div class='user-evett-area'>
+    <% if current_user.id == @user.id%>
+      <div class="Card_area">
+        <div class="Card__title">
+          <h2>カード情報</h2>
+        </div>
+        <div class="Card_info">
+          【カード番号】
+          <br>
+          <%= "**** **** **** " + @card[:last4] %>
+          <%# カード番号の下4桁を取得 %>
+
+          <br>
+          【有効期限】
+          <br>
+          <%= @card[:exp_month] %>
+          <%# 有効期限の「月」を取得 %>
+          /
+          <%= @card[:exp_year] %><br>
+          <%# 有効期限の「年」を取得 %>
+          <div class="new-card-link">
+            <%= link_to '新しいカード情報を登録する', new_user_card_path(current_user)%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class='evett-list'>
+      <div class= 'user-evett'>
+        <p>投稿済みevett一覧</p>
+      <% @evetts.each do |evett|%>
+        <li class='evett_content'>
+          <div class='evett_area' >
+            <ul class='content_menu'>
+              <% if evett.user_id == current_user.id %>
+                <li>
+                  <%= link_to "編集", edit_evett_path(evett.id), method: :get %>
+                </li>
+                <li>
+                  <%= link_to "削除", evett_path(evett.id), method: :delete %>
+                </li>
+              <% end %>
+            </ul>
+            <%= link_to evett_path(evett.id) do %>
+              <div class='main_content'>
+                <div class='evett_name'>
+                  <h2><%= evett.name %></h2>
+                </div>
+                <div class='evett_limit_date'>
+                  <% if evett.limit_date.present? %>
+                    <h2>目標日：<%= evett.limit_date %></h2>
+                  <% end %>
+                </div>
+                <div class='evett_price_back'>
+                  <h2 class="evett_price"><%= Payment.where(evett_id: evett.id).sum(:pay) %>/<%= evett.price %>円</h2>
+                  <% if Payment.where(evett_id: evett.id).sum(:pay) * 100 / evett.price >= 100 %>
+                    <div id="max_percentage", class='evett_price_bar' style="width: 100%;"></div>
+                  <% else %>
+                    <div class='evett_price_bar' style="width: <%=  Payment.where(evett_id: evett.id).sum(:pay) * 100 / evett.price %>%;"></div>
+                  <% end %>
+                </div>
+                <div class='payment_area'>
+                  <%= link_to evett_payments_path(evett.id) do %>
+                    <div class='evett_payment_btn'>入金</div>
+                  <% end %>
+                  <div class='payment_percentage'>
+                    <% unless Payment.where(evett_id: evett.id).sum(:pay) == 0 %>
+                      <h2><%=  Payment.where(evett_id: evett.id).sum(:pay) * 100 / evett.price %>%</h2>
+                    <% else %>
+                      <h2>0%</h2>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+      </div>
+      <div class='user-pay-evett'>
+        <p>入金済みevett一覧</p>
+      <% @payments.each do |pay| %>
+        <li class='evett_content'>
+            <div class='evett_area' >
+              <ul class='content_menu'>
+                <% if pay.evett.user_id == current_user.id %>
+                  <li>
+                    <%= link_to "編集", edit_evett_path(pay.evett.id), method: :get %>
+                  </li>
+                  <li>
+                    <%= link_to "削除", evett_path(pay.evett.id), method: :delete %>
+                  </li>
+                <% end %>
+              </ul>
+              <%= link_to evett_path(pay.evett.id) do %>
+                <div class='main_content'>
+                  <div class='evett_name'>
+                    <h2><%= pay.evett.name %></h2>
+                  </div>
+                  <div class='evett_limit_date'>
+                    <% if pay.evett.limit_date.present? %>
+                      <h2>目標日：<%= pay.evett.limit_date %></h2>
+                    <% end %>
+                  </div>
+                  <div class='evett_price_back'>
+                    <h2 class="evett_price"><%= Payment.where(evett_id: pay.evett.id).sum(:pay) %>/<%= pay.evett.price %>円</h2>
+                    <% if Payment.where(evett_id: pay.evett.id).sum(:pay) * 100 / pay.evett.price >= 100 %>
+                      <div id="max_percentage", class='evett_price_bar' style="width: 100%;"></div>
+                    <% else %>
+                      <div class='evett_price_bar' style="width: <%=  Payment.where(evett_id: pay.evett.id).sum(:pay) * 100 / pay.evett.price %>%;"></div>
+                    <% end %>
+                  </div>
+                  <div class='payment_area'>
+                    <%= link_to evett_payments_path(pay.evett.id) do %>
+                      <div class='evett_payment_btn'>入金</div>
+                    <% end %>
+                    <div class='payment_percentage'>
+                      <% unless Payment.where(evett_id: pay.evett.id).sum(:pay) == 0 %>
+                        <h2><%=  Payment.where(evett_id: pay.evett.id).sum(:pay) * 100 / pay.evett.price %>%</h2>
+                      <% else %>
+                        <h2>0%</h2>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </li>
+      <% end %>
+      </div>
+    </div>
+    <% if current_user.id == @user.id%>
+      <div class="follow-list">
+        フォロー一覧
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render "shared/footer" %>
