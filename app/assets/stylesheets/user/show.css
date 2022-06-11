@@ -1,0 +1,81 @@
+.user-evett-area {
+  padding: 20px;
+  min-height: 70vh;
+  width: 100%;
+  display: flex;
+}
+
+.Card_area {
+  background: linear-gradient(red, orange, yellow);
+  padding: 20px;
+  color: white;
+  width: 20vw;
+  border-radius: 40px 0 0 40px;
+}
+
+.Card_area a {
+  color: white;
+}
+
+.Card__title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid white;
+}
+
+.Card_info {
+  line-height: 40px;
+}
+
+.new-card-link {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid white;
+  line-height: 20px;
+}
+
+.evett-list {
+  padding: 20px 40px;
+}
+
+.user-evett {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid lightgray;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.user-evett p {
+  height: 60px;
+  font-size: 20px;
+  line-height: 40px;
+  background-color: aqua;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.user-pay-evett {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.user-pay-evett p {
+  height: 60px;
+  font-size: 20px;
+  line-height: 40px;
+  background-color: aqua;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+
+.follow-list {
+  background: linear-gradient(red, orange, yellow);
+  padding: 20px;
+  color: white;
+  width: 20vw;
+  border-radius: 0 40px 40px 0;
+  font-size: 24px;
+}

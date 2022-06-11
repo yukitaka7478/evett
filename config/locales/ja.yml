@@ -7,11 +7,8 @@ ja:
         name: evett名
         text: 説明
         price: 価格
+      payment:
+        pay: 入金金額
   attributes: 
-    postage_code: 郵便番号
-    prefecture_id: 都道府県
-    municipality: 市区町村
-    house_num: 番地
-    building_name: 建物名
-    telephone_num: 電話番号
     token: クレジットカード情報
+    card_token: クレジットカード情報
