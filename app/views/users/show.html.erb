@@ -88,7 +88,7 @@
       <div class='user-pay-evett'>
         <p>入金済みevett一覧</p>
       <% @payments.each do |pay| %>
-        <% if evett.user.id != current_user.id && evett.share_area_id == 3 %>
+        <% if pay.evett.user.id != current_user.id && pay.evett.share_area_id == 3 %>
         <% else %>
           <li class='evett_show_content'>
               <div class='evett_area' >

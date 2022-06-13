@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     end
 
     @evetts = Evett.where(user_id: @user.id).order('created_at DESC')
-    @payments = Payment.where(user_id: @user.id)
+    @payments = Payment.where(user_id: @user.id).select(:evett_id).distinct
   end
 
   def update
