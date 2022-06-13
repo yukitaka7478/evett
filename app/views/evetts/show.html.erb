@@ -14,8 +14,9 @@
         <% end %>
       </ul>
       <div class='show_main_content'>
-        <div class='evett_name'>
+        <div class='evett_show_name'>
           <h2><%= @evett.name %></h2>
+          <h1><%= link_to @evett.user.nickname, user_path(@evett.user.id), method: :get %> </h1>
         </div>
         <div class='evett_show_box'>
           <%= @evett.text %>

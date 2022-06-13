@@ -103,6 +103,24 @@
   margin-top: 15px;
 }
 
+.evett_show_name {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.evett_show_name h1 {
+  background-color: #3ccace;
+  padding: 0 20px;
+  border-radius: 20px;
+}
+
+.evett_show_name h1 a {
+  color: #090909;
+  font-weight: bold;
+  font-size: 28px;
+}
+
 .evett_text {
   width: 110%;
   height: 50%;

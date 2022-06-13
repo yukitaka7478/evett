@@ -4,7 +4,7 @@
 
 .header {
   width: 100vw;
-  height: 13vh;
+  height: 100px;
   padding: 1.5vh 7vw 0 7vw;
   background-color: rgb(28, 244, 240);
   display: flex;
