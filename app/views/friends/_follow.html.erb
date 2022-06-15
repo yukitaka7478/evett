@@ -6,11 +6,12 @@
     <% @followed_users.each do |followed| %>
       <div class="follow_name">
         <%= link_to followed.nickname, user_path(followed.id), method: :get %>
+        <%= link_to "解除", user_friend_path(followed.id), method: :delete, class: "follow_name_btn" %>
       </div>
     <% end %>
   </div>
   <div class="follow">
-    <h5>フォロー<%= user.following.count %>人</h5>
-    <h5>フォロワー<%= user.followed.count %>人</h5>
+    <h5>フォロー<%= user.following.count %>人（閲覧可能）</h5>
+    <h5>フォロワー<%= user.followed.count %>人（閲覧許可）</h5>
   </div>
 </div>
