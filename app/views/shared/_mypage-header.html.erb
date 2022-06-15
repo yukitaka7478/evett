@@ -2,7 +2,13 @@
   <div class='logo'>
     <%= link_to 'Evett', root_path %>
   </div>
-  <div class='header-list'>
+  <div class='nav'>
+    <ul class='lists-left'>
+      <% if current_user.id == @user.id %>
+        <li class="list-name", id="active-list">evett一覧</li>
+        <li class="list-name">ユーザー情報</li>
+      <% end %>
+    </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
         <li><%= link_to current_user.nickname, user_path(current_user), class: "user-nickname" %></li>

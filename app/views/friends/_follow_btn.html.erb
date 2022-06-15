@@ -1,0 +1,5 @@
+<% if current_user.following?(user_id) %>
+  <%= link_to "フォロー外す", user_friend_path(user_id), method: :delete, class: "follow_btn" %>
+<% else %>
+  <%= link_to "フォローする", user_friend_path(user_id), method: :post, class: "follow_btn" %>
+<% end %>

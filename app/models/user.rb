@@ -11,9 +11,25 @@ class User < ApplicationRecord
   has_many :evetts, dependent: :destroy
   has_many :payments, dependent: :destroy
   has_one :card, dependent: :destroy
-  # has_many :followed
-  # has_many :following
-  # has_many :followed_user
-  # has_many :following_user
+  has_many :followed, class_name: "Friend", foreign_key: "followed_id", dependent: :destroy
+  has_many :following, class_name: "Friend", foreign_key: "following_id", dependent: :destroy
+  has_many :followed_user, through: :following, source: :followed
+  has_many :following_user, through: :followed, source: :following
+
+  # ユーザーをフォローする
+  def follow(user_id)
+    following.create(followed_id: user_id)
+  end
+
+  # ユーザーのフォローを外す
+  def unfollow(user_id)
+    following.find_by(followed_id: user_id).destroy
+  end
+
+  # フォローしていればtrueを返す
+  def following?(user)
+    followed_user.include?(user)
+  end
+
   # has_many :sns
 end

@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show, :update] do
     resources :cards, only: [:new, :create]
+    get 'followings', to: 'freinds#followings', as: 'followings'
+    get 'followeds', to: 'freinds#followeds', as: 'followeds'
+    resource :friend, only: [:create, :destroy]
   end
 end

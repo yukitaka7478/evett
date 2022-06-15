@@ -13,7 +13,7 @@ class CardsController < ApplicationController
     )
     if @card.valid? 
       @card.save
-      redirect_to root_path
+      redirect_to user_path(current_user.id)
     else
       render "new" 
     end
