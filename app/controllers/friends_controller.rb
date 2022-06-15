@@ -1,5 +1,4 @@
 class FriendsController < ApplicationController
-  
   def create
     current_user.follow(params[:user_id])
     redirect_to request.referer
@@ -7,6 +6,6 @@ class FriendsController < ApplicationController
 
   def destroy
     current_user.unfollow(params[:user_id])
-    redirect_to request.referer  
+    redirect_to request.referer
   end
 end

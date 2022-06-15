@@ -15,18 +15,18 @@ RSpec.describe Friend, type: :model do
     it 'followed_idが空では保存できないこと' do
       @friend.followed_id = nil
       @friend.valid?
-      expect(@friend.errors.full_messages).to include("Followedを入力してください")
+      expect(@friend.errors.full_messages).to include('Followedを入力してください')
     end
     it 'following_idが空では保存できないこと' do
       @friend.following_id = nil
       @friend.valid?
-      expect(@friend.errors.full_messages).to include("Followingを入力してください")
+      expect(@friend.errors.full_messages).to include('Followingを入力してください')
     end
     it 'following_idとfollowed_idが同じ値では保存できないこと' do
       @friend.followed_id = 1
       @friend.following_id = 1
       @friend.valid?
-      expect(@friend.errors.full_messages).to include("Followingを入力してください", "Followedを入力してください")
+      expect(@friend.errors.full_messages).to include('Followingを入力してください', 'Followedを入力してください')
     end
   end
 end

@@ -11,8 +11,8 @@ class User < ApplicationRecord
   has_many :evetts, dependent: :destroy
   has_many :payments, dependent: :destroy
   has_one :card, dependent: :destroy
-  has_many :followed, class_name: "Friend", foreign_key: "followed_id", dependent: :destroy
-  has_many :following, class_name: "Friend", foreign_key: "following_id", dependent: :destroy
+  has_many :followed, class_name: 'Friend', foreign_key: 'followed_id', dependent: :destroy
+  has_many :following, class_name: 'Friend', foreign_key: 'following_id', dependent: :destroy
   has_many :followed_user, through: :following, source: :followed
   has_many :following_user, through: :followed, source: :following
 
