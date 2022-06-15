@@ -1,27 +1,8 @@
-.follow_btn:hover {
-  color: red;
-}
-
 .user-evett-area {
   padding: 20px;
   min-height: 70vh;
   width: 100%;
   display: flex;
-  justify-content: center;
-}
-
-.user_name_area {
-  background: linear-gradient(red, orange, yellow);
-  padding: 20px;
-  font-size: 24px;
-  color: white;
-  width: 240px;
-  height: 200px;
-  border-radius: 40px;
-}
-
-.user_name_area h2 {
-  margin-bottom: 30px;
 }
 
 #user-evett-list {
@@ -76,8 +57,9 @@
   width: 70vw;
   height: 80vh;
   border-radius: 200px;
-  padding: 10px 50px;
+  padding: 20px 100px;
   margin-top: 20px;
+  margin-left: 14%;
   display: none;
   justify-content: space-between;
   align-items: center;
@@ -98,6 +80,7 @@
 
 .Card_info {
   line-height: 40px;
+  min-height: 300px;
 }
 
 .new-card-link {
@@ -113,29 +96,35 @@
   color: white;
   width: 300px;
   height: 60vh;
-  font-size: 30px;
 }
 
 .follow-title {
   border-bottom: 1px solid white;
+  font-size: 30px;
   margin-bottom: 20px;
-}
-
-.follower {
-  margin-bottom: 10px;
-  line-height: 40px;
-  font-size: 18px;
 }
 
 .follow {
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: start;
+  margin-top: 20px;
   line-height: 40px;
   font-size: 18px;
-  border-bottom: 1px solid white;
+  border-top: 1px solid white;
+}
+.follow h5 {
+  margin-right: 20px;
 }
 
 .follow_name {
   margin-bottom: 10px;
   font-size: 20px;
+}
+
+.follow_name a {
+  color: white;
+}
+
+.follow-area {
+  min-height: 300px;
 }

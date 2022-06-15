@@ -26,18 +26,12 @@ class EvettsController < ApplicationController
   end
 
   def edit
+    session[:previous_url] = request.referer
   end
 
   def update
     if @evett.update(evett_params)
-      path = Rails.application.routes.recognize_path(request.referer)
-      if path[:controller] == "users"
-        redirect_to user_path(@evett.user.id)
-      elsif path[:controller] == "evetts" && path[:action] == "show"
-        redirect_to evett_path(@evett.id)
-      else
-        redirect_to root_path
-      end
+      redirect_to session[:previous_url]
     else
       render :edit
     end

@@ -61,6 +61,15 @@
   font-weight: bold;
 }
 
+.follow_btn {
+  padding: 6px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.follow_btn:hover {
+  color: red;
+}
 
 .logout {
   text-decoration: none;
