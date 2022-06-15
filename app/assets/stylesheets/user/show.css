@@ -1,43 +1,37 @@
+.follow_btn:hover {
+  color: red;
+}
+
 .user-evett-area {
   padding: 20px;
   min-height: 70vh;
   width: 100%;
   display: flex;
+  justify-content: center;
 }
 
-.Card_area {
+.user_name_area {
   background: linear-gradient(red, orange, yellow);
   padding: 20px;
+  font-size: 24px;
   color: white;
-  width: 20vw;
-  max-width: 150px;
-  border-radius: 40px 0 0 40px;
+  width: 240px;
+  height: 200px;
+  border-radius: 40px;
 }
 
-.Card_area a {
-  color: white;
+.user_name_area h2 {
+  margin-bottom: 30px;
 }
 
-.Card__title {
-  font-size: 22px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid white;
-}
-
-.Card_info {
-  line-height: 40px;
-}
-
-.new-card-link {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid white;
-  line-height: 20px;
+#user-evett-list {
+  display: block;
 }
 
 .evett-list {
   padding: 20px 40px;
   min-width: 1090px;
+  display: flex;
 }
 
 .evett_show_content {
@@ -77,12 +71,71 @@
   padding: 10px;
 }
 
+.user_area{
+  background: linear-gradient(red, orange, yellow);
+  width: 70vw;
+  height: 80vh;
+  border-radius: 200px;
+  padding: 10px 50px;
+  margin-top: 20px;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.Card_area {
+  height: 60vh;
+  width: 300px;
+  margin: 20px 30px;
+}
+
+.Card__title {
+  font-size: 30px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid white;
+}
+
+.Card_info {
+  line-height: 40px;
+}
+
+.new-card-link {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid white;
+  line-height: 20px;
+}
+
 
 .follow-list {
-  background: linear-gradient(red, orange, yellow);
-  padding: 20px;
+  margin: 20px 30px;
   color: white;
-  width: 20vw;
-  border-radius: 0 40px 40px 0;
-  font-size: 22px;
+  width: 300px;
+  height: 60vh;
+  font-size: 30px;
+}
+
+.follow-title {
+  border-bottom: 1px solid white;
+  margin-bottom: 20px;
+}
+
+.follower {
+  margin-bottom: 10px;
+  line-height: 40px;
+  font-size: 18px;
+}
+
+.follow {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  line-height: 40px;
+  font-size: 18px;
+  border-bottom: 1px solid white;
+}
+
+.follow_name {
+  margin-bottom: 10px;
+  font-size: 20px;
 }

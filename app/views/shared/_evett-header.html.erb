@@ -5,6 +5,11 @@
   </div>
   <div class='nav'>
     <ul class='lists-left'>
+      <li class="list-name", id="active-tag">誰でも</li>
+      <% if user_signed_in? %>
+        <li class="list-name">友達</li>
+        <li class="list-name"><%= current_user.nickname %></li>
+      <% end %>
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>

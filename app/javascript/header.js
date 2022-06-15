@@ -6,8 +6,7 @@ const header = () => {
   const userTab = document.getElementById("user");
 
   listName.forEach(function(list, index){
-    list.addEventListener("click", function (e){
-      e.preventDefault();
+    list.addEventListener("click", function (){
       activeTag.removeAttribute("id");
       list.setAttribute("id", "active-tag");
       if(index == 0){
