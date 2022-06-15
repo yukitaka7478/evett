@@ -30,7 +30,14 @@ class EvettsController < ApplicationController
 
   def update
     if @evett.update(evett_params)
-      redirect_to evett_path(@evett.id)
+      path = Rails.application.routes.recognize_path(request.referer)
+      if path[:controller] == "users"
+        redirect_to user_path(@evett.user.id)
+      elsif path[:controller] == "evetts" && path[:action] == "show"
+        redirect_to evett_path(@evett.id)
+      else
+        redirect_to root_path
+      end
     else
       render :edit
     end
@@ -38,7 +45,7 @@ class EvettsController < ApplicationController
 
   def destroy
     @evett.destroy
-    redirect_to root_path
+    redirect_to request.referrer || root_path
   end
 
   private
