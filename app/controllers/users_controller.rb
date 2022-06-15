@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       @card = customer.cards.first
       
       @following_users = @user.following_user
-      @followed_users = @user.followed_user
+      @followed_users = @user.followed_user.order('created_at DESC')
     end
 
     @evetts = Evett.where(user_id: @user.id).order('created_at DESC')

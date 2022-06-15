@@ -1,13 +1,6 @@
 <%= render "shared/mypage-header"%>
 <div class="main">
   <div class='user-evett-area'>
-    <% if current_user.id == @user.id%>
-    <% else %>
-      <div class="user_name_area">
-        <h2><%= @user.nickname %><br>のマイページ</h2>
-        <h2><%= render 'friends/follow_btn', user_id: @user %></h2>
-      </div>
-    <% end %>
     <div class='evett-list', id="user-evett-list">
       <div class= 'user-evett'>
         <p>投稿済みevett一覧</p>
@@ -139,9 +132,9 @@
           /
           <%= @card[:exp_year] %><br>
           <%# 有効期限の「年」を取得 %>
-          <div class="new-card-link">
-            <%= link_to '新しいカード情報を登録する', new_user_card_path(current_user)%>
-          </div>
+        </div>
+        <div class="new-card-link">
+          <%= link_to '新しいカード情報を登録する', new_user_card_path(current_user)%>
         </div>
       </div>
       <%= render 'friends/follow', user: @user %>

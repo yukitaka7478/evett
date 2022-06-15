@@ -110,7 +110,7 @@
 }
 
 .evett_show_name h1 {
-  background-color: #3ccace;
+  background-color: white;
   padding: 0 20px;
   border-radius: 20px;
 }
@@ -118,7 +118,11 @@
 .evett_show_name h1 a {
   color: #090909;
   font-weight: bold;
-  font-size: 28px;
+  font-size: 22px;
+}
+
+.evett_show_name h1 a:hover {
+  color: red;
 }
 
 .evett_text {

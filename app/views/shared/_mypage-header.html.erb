@@ -11,8 +11,13 @@
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
-        <li><%= link_to current_user.nickname, user_path(current_user), class: "user-nickname" %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+        <% if current_user.id == @user.id %>
+          <li><%= link_to current_user.nickname, user_path(current_user), class: "user-nickname" %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+        <% else %>
+          <li class="user-nickname"><%= @user.nickname %></li>
+          <li><%= render 'friends/follow_btn', user_id: @user %></li>
+        <% end %>
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
         <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>

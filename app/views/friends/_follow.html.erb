@@ -1,16 +1,16 @@
 <div class="follow-list">
   <div class="follow-title">
-    フォロー 一覧
+    友達一覧
   </div>
-  <div class="follower">
-    <h5>フォロワー<%= user.followed.count %>人</h5>
+  <div class="follow-area">
+    <% @followed_users.each do |followed| %>
+      <div class="follow_name">
+        <%= link_to followed.nickname, user_path(followed.id), method: :get %>
+      </div>
+    <% end %>
   </div>
   <div class="follow">
     <h5>フォロー<%= user.following.count %>人</h5>
+    <h5>フォロワー<%= user.followed.count %>人</h5>
   </div>
-  <% @followed_users.each do |followed| %>
-    <div class="follow_name">
-      <%= followed.nickname %>
-    </div>
-  <% end %>
 </div>
