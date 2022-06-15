@@ -105,8 +105,6 @@
 }
 
 .follow {
-  display: flex;
-  justify-content: start;
   margin-top: 20px;
   line-height: 40px;
   font-size: 18px;
@@ -117,12 +115,23 @@
 }
 
 .follow_name {
+  padding: 5px;
   margin-bottom: 10px;
-  font-size: 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .follow_name a {
   color: white;
+  padding: 6px;
+}
+
+.follow_name_btn:hover {
+  color: red;
+  background-color: white;
+  border-radius: 20px;
 }
 
 .follow-area {

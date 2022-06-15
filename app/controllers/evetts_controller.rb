@@ -6,6 +6,9 @@ class EvettsController < ApplicationController
     @evetts_all = Evett.where(share_area_id: 1).order('created_at DESC')
     @evetts_friend = Evett.where(share_area_id: 2).order('created_at DESC')
     @evetts_only = Evett.where(share_area_id: 3).order('created_at DESC')
+    
+    @followed_users = current_user.followed_user
+    
   end
 
   def new
