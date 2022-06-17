@@ -138,6 +138,11 @@
         </div>
       </div>
       <%= render 'friends/follow', user: @user %>
+      <%= form_with(url: search_users_path, local: true, method: :get, id: "search-form") do |f| %>
+        <%= f.text_field :nickname, placeholder: "ユーザーを検索する", id: "search-input" %>
+        <div id="result"></div>
+        <div>＊enterキーを押さないで下さい</div>
+      <% end %>
     </div>
   <% end %>
 </div>

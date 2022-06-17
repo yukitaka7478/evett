@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       customer = Payjp::Customer.retrieve(card.customer_token) # 先程のカード情報を元に、顧客情報を取得
       @card = customer.cards.first
 
-      @following_users = @user.following_user
+      @following_users = @user.following_user.order('created_at DESC')
       @followed_users = @user.followed_user.order('created_at DESC')
     end
 
@@ -34,6 +34,12 @@ class UsersController < ApplicationController
   def followed
     @users = @user.followed
     render 'show_user'
+  end
+
+  def search
+    return nil if params[:keyword] == ""
+    user = User.where('nickname LIKE ?', "%#{params[:keyword]}%" )
+    render json:{ keyword: user }
   end
 
   private
