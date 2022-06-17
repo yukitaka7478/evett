@@ -37,9 +37,10 @@ class UsersController < ApplicationController
   end
 
   def search
-    return nil if params[:keyword] == ""
-    user = User.where('nickname LIKE ?', "%#{params[:keyword]}%" )
-    render json:{ keyword: user }
+    return nil if params[:keyword] == ''
+
+    user = User.where('nickname LIKE ?', "%#{params[:keyword]}%")
+    render json: { keyword: user }
   end
 
   private
