@@ -6,6 +6,7 @@
         <p>投稿済みevett一覧</p>
       <% @evetts.each do |evett|%>
         <% if evett.user.id != current_user.id && evett.share_area_id == 3 %>
+        <% elsif current_user.following_user.find_by(id: @user.id) == nil && evett.share_area_id == 2 %>
         <% else %>
           <li class='evett_show_content'>
             <div class='evett_area' >
@@ -60,6 +61,7 @@
         <p>入金済みevett一覧</p>
       <% @payments.each do |pay| %>
         <% if pay.evett.user.id != current_user.id && pay.evett.share_area_id == 3 %>
+        <% elsif current_user.following_user.find_by(id: @user.id) == nil && pay.evett.share_area_id == 2 %>
         <% else %>
           <li class='evett_show_content'>
               <div class='evett_area' >

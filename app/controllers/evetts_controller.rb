@@ -1,6 +1,7 @@
 class EvettsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :edit, :show]
   before_action :evett_find, only: [:show, :edit, :update, :destroy]
+  before_action :unless_user_id, only: [:edit, :destroy]
 
   def index
     @evetts_all = Evett.where(share_area_id: 1).order('created_at DESC')
@@ -25,6 +26,12 @@ class EvettsController < ApplicationController
 
   def show
     @payment = Payment.where(evett_id: @evett.id).sum(:pay)
+    
+    if @evett.share_area_id == 3
+      redirect_to root_path unless @evett.user.id == current_user.id
+    elsif @evett.share_area_id == 2
+      redirect_to root_path if current_user.following_user.find_by(id: @evett.user.id) == nil
+    end
   end
 
   def edit
@@ -52,5 +59,9 @@ class EvettsController < ApplicationController
 
   def evett_find
     @evett = Evett.find(params[:id])
+  end
+
+  def unless_user_id
+    redirect_to root_path unless current_user.id == @evett.user_id
   end
 end

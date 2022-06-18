@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :user_find, only: [:show, :following, :followed]
 
   def show
+    @evetts = Evett.where(user_id: @user.id).order('created_at DESC')
+    @payments = Payment.where(user_id: @user.id).select(:evett_id).distinct
+
     if @user.id == current_user.id
       Payjp.api_key = ENV['PAYJP_SECRET_KEY'] # 環境変数を読み込む
       card = Card.find_by(user_id: current_user.id) # ユーザーのid情報を元に、カード情報を取得
@@ -13,9 +16,6 @@ class UsersController < ApplicationController
       @following_users = @user.following_user.order('created_at DESC')
       @followed_users = @user.followed_user.order('created_at DESC')
     end
-
-    @evetts = Evett.where(user_id: @user.id).order('created_at DESC')
-    @payments = Payment.where(user_id: @user.id).select(:evett_id).distinct
   end
 
   def update
