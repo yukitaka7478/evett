@@ -10,8 +10,8 @@
 
     <%= render "shared/error_messages", model: f.object %>
     <div class="sns-links">
-      <%= link_to 'Facebookでログイン',root_path , class:"sns" %><%#, user_facebook_omniauth_authorize_path, class:"facebook", method: :post%>
-      <%= link_to 'Googleでログイン',root_path , class:"sns" %><%#, user_google_oauth2_omniauth_authorize_path, class:"google", method: :post%>
+      <%= link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, class:"facebook", method: :post%>
+      <%= link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, class:"google", method: :post%>
     </div>
 
     <div class="form-group">
