@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_13_073249) do
+ActiveRecord::Schema.define(version: 2022_06_18_030715) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "customer_token", null: false
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 2022_06_13_073249) do
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -69,4 +78,5 @@ ActiveRecord::Schema.define(version: 2022_06_13_073249) do
   add_foreign_key "evetts", "users"
   add_foreign_key "payments", "evetts"
   add_foreign_key "payments", "users"
+  add_foreign_key "sns_credentials", "users"
 end
