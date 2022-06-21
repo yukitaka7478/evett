@@ -1,93 +1,123 @@
-# README
+# アプリケーション名
+Evett
 
-## usersテーブル
+# アプリケーション概要
+やりたいイベントをシェアしながらお金を集めることができる。
 
-| Column              | Type     | Options            |
-| ------------------- | -------- | -------------------|
-| nickname            | string   | null: false        |
-| email               | string   | null: false unique |
-| encrypted_password  | string   | null: false        |
+# URL
+https://evett.herokuapp.com/
 
-### Association
-- has_many :evetts
-- has_many :payments
-- has_many :followed
-- has_many :following
-- has_many :followed_user
-- has_many :following_user
-- has_many :sns
+# テスト用アカウント
 
+・ Basic認証ID ：admin
 
-## evettsテーブル
+・ Basic認証パスワード ：2222
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | -------------------------------|
-| name       | string     | null: false                    |
-| text       | text       | null: false                    |
-| price      | integer    | null: false                    |
-| limit_date | date       |                                |
-| share_area | integer    |                                |
-| user       | references | null: false, foreign_key: true |
+・ メールアドレス :test-user@gmail.com
 
-### Association
-- belongs_to :user
-- has_many :payments
+・ パスワード :testuser1
 
+# 利用方法
+## Evett(Event wallet)を投稿する
+1. ユーザー新規登録を行う
+2. 新規投稿ボタンから、evett名、説明、金額（目標期日は任意、公開範囲はデフォルトが全体公開）を入力して投稿する
+3. 投稿の公開範囲は、①全体②友達のみ③自分のみ の３つから選択できる
 
-## paymentsテーブル
-| Column | Type       | Options                        |
-| ------ | ---------- | -------------------------------|
-| user   | references | null: false, foreign_key: true |
-| pay    | integer    | null: false                    |
-| evett  | references | null: false, foreign_key: true |
+## 投稿されたEvettに入金する
+1. 一覧ページ、投稿詳細ページ、マイページの入金ボタンから入金できる
+2. 入金ボタンから、金額とクレジットカード情報を入力して入金する(マイページにカード情報を保存してあれば、入金の際に入力が省略される)
 
-### Association
-- belongs_to :user
-- belongs_to :evett
+## ユーザーをフォローする
+1. 自分以外のマイページのユーザー名の隣に「フォローする」ボタンを押せる
+2. フォローしたユーザー、フォローされたユーザーはマイページの「ユーザー情報」欄で確認できる
+3. フォローしたユーザーが「友達に公開」で投稿したevettを閲覧できるようになる
+
+# アプリケーションを作成した背景
+大学時代の友人たちと旅行に行った際に、最後に集金をして時間がかかっていた所が印象に残って勿体無い思いをした体験があった。そこから「もっと楽に旅行だけを楽しめたらいいな」と考え、「イベントごとに財布を作ってそこに集金すれば、その場でわざわざ集金しないで済むな」という発想に行き着いた。PayPayの送金機能やLINEPayのわりかん機能も参加者全員が同じサービスを使えるよう事前に設定が必要なので、そうしたちょうど使いやすいサービスが無いと考えた。
+
+# 洗い出した要件
+
+[要件を定義したシート](https://docs.google.com/spreadsheets/d/1DIx4kE59IpTq_3PjbDBFgqGh8XzyoctrQt7RUybdLP8/edit?usp=sharing)  
 
 
-## friendsテーブル
-| Column    | Type       | Options                        |
-| --------- | ---------- | -------------------------------|
-| followed  | references | null: false, foreign_key: true |
-| following | references | null: false, foreign_key: true |
+# 実装した機能についての画像やGIFおよびその説明※
+## evett一覧機能
+ヘッダーのタグから非同期で表示を変更できる
+[![Image from Gyazo](https://i.gyazo.com/2f96c31c284ee5651fb47a9684430c9b.gif)](https://gyazo.com/2f96c31c284ee5651fb47a9684430c9b)
+## evett投稿機能
+右下の「投稿する」ボタンから投稿画面に遷移できる  
+必要事項を入力すると投稿できる（公開範囲はデフォルトで全員が選択されており、目標日は任意）
+## evett詳細機能
+## evett編集機能
+## evett入金機能
+## ユーザー新規登録ページ
+## ユーザーログインページ
+## ユーザーマイページ
+ 
+# 実装予定の機能
+入金合計額、投稿合計額などのevett関連のデータの表示や出金機能の実装を予定。
 
-### Association
-- belongs_to :followed
-- belongs_to :following
+メールアドレスやパスワードを用いず、一時的なトークン発行をして簡易的なログインができる機能を実装したい。
 
+投稿にタグ付け機能やグループ分けをできるような機能の実装も考えている。
 
-## snsテーブル
-| Column   | Type       | Options                        |
-| -------- | ---------- | -------------------------------|
-| provider | string     | null: false                    |
-| uid      | string     | null: false                    |
-| user     | references | null: false, foreign_key: true |
+# データベース設計
+[![ER図](/app/assets/images/evett_db.png)]
 
-### Association
-- belongs_to :user, optional: true
+# 画面遷移図
+[![画面遷移図](/app/assets/images/flaw.png)]
 
+# 開発環境
+・ フロントエンド
 
+・ バックエンド
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+・ インフラ
 
-Things you may want to cover:
+・ テスト
 
-* Ruby version
+・ テキストエディタ
 
-* System dependencies
+・ タスク管理
 
-* Configuration
+# ローカルでの動作方法※
+以下のコマンドを順に実行
 
-* Database creation
+% git clone https://github.com/yukitaka7478/evett
 
-* Database initialization
+% cd xxxxx
 
-* How to run the test suite
+% bundle install
 
-* Services (job queues, cache servers, search engines, etc.)
+% yarn install
 
-* Deployment instructions
+# 工夫したポイント※
+## サービス運営を想定した設計
+・自分の使いたいサービスが実際にどのような見た目であればより使いたくなるのか。  
+・色々できるサービスはあるけど、それらができていないサービスは何か。  
+・いかに既存のサービスで使われている要素を組み込んでストレスなく使用できるか。  
+・今の自分の技術だけで作れそうなものか。
+こうした点を中心に工夫しました。
+## 直感的なビュー
+Evettのメニュー（編集、削除ボタン）を左上、入金状況をバーと右下のパーセンテージで表現した。evett一覧で表示する情報量のバランスに苦労した。  
+Javascriptを用いて、ヘッダーのタグで一覧表示された投稿を切り替えられるようにした。アクションが割り振られていないボタンや表示を極力省略し、どのボタンも何かしらの役割を持たせてある。
+## シンプルな機能
+基本的な機能は、①投稿②入金 の二つにした。なぜならこのアプリケーションは友達同士や自分で使う前提で、不特定多数の人々と繋がることを一番においていないからだ。友達同士のコミュニケーションはこのアプリではなく既存のSNSで行えばよい。そのためそれらのSNSで行えない金銭のやり取り機能を実装した。
+## 公開範囲の設定
+Evettの公開範囲は３種類に設定している。  
+1. 全体公開  
+evett投稿ではデフォルトで全体に公開されるようになっている。誰でも閲覧、入金できる状態。知らない人から入金されることはほとんど無いとは思うが、使われるイメージとしてはAmazonのほしい物リスト。
+2. 友達のみ公開  
+自分をフォローしてくれているユーザーのみに表示できる機能。フォローしたユーザーに公開できる訳ではないが、フォロー、フォロワーの関係性が理解できているスマホユーザーレベルであればストレスなく理解できると考える。
+3. 自分のみ公開  
+自分以外のユーザーに表示させない機能。
+## 多様な使い方
+Evettは大きく二つの使い方を想定している。（３つ目の使い方は多くのユーザーが使用してからを想定している。）
+1. 個人用の用途別口座  
+貯金をする際に「車を買うため」「欲しいものを買うため」と何かしらの目的を決める人は多い。しかし口座や財布は単なるお金の入れ物に過ぎず、目的に沿ったラベリングができる作りになっていない。目の前の誘惑に負けて貯金を使ってしまい後悔する事を防ぐためにお金をプールできる。  
 
-* ...
+2. 複数人の共有口座  
+学生時代の友人や会社の同僚、家族と旅行に行く際に、都度都度事前、事後に集金をすることは非効率的である。LINEグループがあるのならグループ口座があっても良いと考えた。そうすることで、事前に多めに集め当日はevettから引き出すも良し、当日は誰かが立て替えて後日Evettに集金するも良し。当日お金の心配をせずにイベントを楽しめるはずだ。  
+
+3. 法人、個人向けのイベント公開プラットフォーム  
+Evettの公開範囲は前述の通り３種類に分けられている。各種SNSの多くは全体公開の機能を検索というステップを踏ませて限定的にしている。それはSNSでの投稿がコストが低く一覧表示させるには投稿が多すぎるからだ。しかしEvettはイベントの投稿という性質上SNSと比較して投稿コストが大きい。そのためクラウドファンディングのプロジェクトやECサイトの商品のようにイベントを投稿できるプラットフォームとしての使い方も可能だろう。これらのサービスはアクセスへのハードルが高い。それに比べてEvettは貯金や入金といった習慣や必要な作業がベースとなっているので、プラットフォームとして高い素質があるように考えられる。
