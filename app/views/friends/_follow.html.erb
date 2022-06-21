@@ -3,20 +3,24 @@
     友達一覧
   </div>
   <div class="follow-area">
-    <% @followed_users.each do |followed| %>
-      <div class="follow_name", id="follow_active">
-        <%= link_to followed.nickname, user_path(followed.id), method: :get %>
-        <%= link_to "解除", user_friend_path(followed.id), method: :delete, class: "follow_name_btn" %>
-      </div>
-    <% end %>
-    <% @following_users.each do |following| %>
-      <div class="follow_name", id="follow_hidden">
-        <%= link_to following.nickname, user_path(following.id), method: :get %>
-        <%= link_to "解除", user_friend_path(following.id), method: :delete, class: "follow_name_btn" %>
-      </div>
-    <% end %>
+    <div class="follow", id="followed-area">
+      <% @followed_users.each do |followed| %>
+        <div class="follow_name">
+          <%= link_to followed.nickname, user_path(followed.id), method: :get %>
+          <%= link_to "解除", user_friend_path(followed.id), method: :delete, class: "follow_name_btn" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="follow", id="following-area">
+      <% @following_users.each do |following| %>
+        <div class="follow_name">
+          <%= link_to following.nickname, user_path(following.id), method: :get %>
+          <%= link_to "解除", user_friend_path(following.id), method: :delete, class: "follow_name_btn" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="follow">
+  <div class="follow_num">
     <h5 id="following">フォロー<%= user.following.count %>人（閲覧可能）</h5>
     <h5 id="followed">フォロワー<%= user.followed.count %>人（閲覧許可）</h5>
   </div>

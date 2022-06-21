@@ -105,19 +105,19 @@
   margin-bottom: 20px;
 }
 
-.follow {
+.follow_num {
   margin-top: 20px;
   line-height: 40px;
   font-size: 18px;
   border-top: 1px solid white;
 }
 
-.follow h5 {
+.follow_num h5 {
   margin-right: 20px;
   cursor: pointer;
 }
 
-.follow h5:hover {
+.follow_num h5:hover {
   color: black;
   background-color: white;
   border-radius: 20px;
@@ -143,12 +143,12 @@
   border-radius: 20px;
 }
 
-#follow_hidden {
-  display: none;
-}
-
 .follow-area {
   min-height: 300px;
+}
+
+.follow {
+  display: block;
 }
 
 #search-form {

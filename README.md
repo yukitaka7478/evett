@@ -42,18 +42,70 @@ https://evett.herokuapp.com/
 
 # 実装した機能についての画像やGIFおよびその説明※
 ## evett一覧機能
-ヘッダーのタグから非同期で表示を変更できる
-[![Image from Gyazo](https://i.gyazo.com/2f96c31c284ee5651fb47a9684430c9b.gif)](https://gyazo.com/2f96c31c284ee5651fb47a9684430c9b)
+ヘッダーのタグから非同期で表示を変更できる  
+
+[![Image from Gyazo](https://i.gyazo.com/2f96c31c284ee5651fb47a9684430c9b.gif)](https://gyazo.com/2f96c31c284ee5651fb47a9684430c9b) 
+
 ## evett投稿機能
 右下の「投稿する」ボタンから投稿画面に遷移できる  
-必要事項を入力すると投稿できる（公開範囲はデフォルトで全員が選択されており、目標日は任意）
+
+[![Image from Gyazo](https://i.gyazo.com/bfe6de7de88e1474381296ac375a7aad.gif)](https://gyazo.com/bfe6de7de88e1474381296ac375a7aad) 
+
+必要事項を入力すると投稿できる（公開範囲はデフォルトで全員が選択されており、目標日は任意）  
+
+[![Image from Gyazo](https://i.gyazo.com/1ba002efbc134c42e87aaf5805af81d0.gif)](https://gyazo.com/1ba002efbc134c42e87aaf5805af81d0)  
+
 ## evett詳細機能
+投稿時入力した全ての情報が表示されている  
+ユーザー名をクリックするとそのユーザーのマイページに遷移する  
+
+[![Image from Gyazo](https://i.gyazo.com/5279247773a7cd746e511a97d3c04d10.png)](https://gyazo.com/5279247773a7cd746e511a97d3c04d10)  
+
 ## evett編集機能
+自分が投稿したevettの右上のメニューエリアにカーソルを合わせると「編集」「削除」ボタンが表示される  
+「編集」ボタンを押すと目標日以外の情報が保存されて編集ページに遷移する  
+目標日が入力されている場合は『「目標日」が設定されています』というアナウンスが表示される  
+
+[![Image from Gyazo](https://i.gyazo.com/4c9ebb513e73460df2351912e59222a1.gif)](https://gyazo.com/4c9ebb513e73460df2351912e59222a1)  
+
+「削除」ボタンを押すと削除して直前のページに遷移する  
+[![Image from Gyazo](https://i.gyazo.com/32370a6b34d47d68b89e0059fc8ae39f.gif)](https://gyazo.com/32370a6b34d47d68b89e0059fc8ae39f)  
+
 ## evett入金機能
+クレジットカードを登録していないユーザーの場合  
+金額とクレジットカード情報を登録することで入金できる
+[![Image from Gyazo](https://i.gyazo.com/e8d522a67c51926c072a5a5c02b13101.gif)](https://gyazo.com/e8d522a67c51926c072a5a5c02b13101)  
+
+既にユーザーがクレジットカードを登録している場合  
+金額を入力すると入金することができる
+[![Image from Gyazo](https://i.gyazo.com/58b671996780e2b5d5cbb6c40440a0a6.gif)](https://gyazo.com/58b671996780e2b5d5cbb6c40440a0a6)  
+
 ## ユーザー新規登録ページ
+ニックネーム、メールアドレス、パスワード、確認用パスワードを入力して新規登録できる
+[![Image from Gyazo](https://i.gyazo.com/de6cd47913c0d0f4ea6d67c28f4fc4c3.gif)](https://gyazo.com/de6cd47913c0d0f4ea6d67c28f4fc4c3)  
+
 ## ユーザーログインページ
+メールアドレス、パスワードを入力してログインできる
+[![Image from Gyazo](https://i.gyazo.com/ed51f49906bde1d0e0a03ff0c1061ff0.gif)](https://gyazo.com/ed51f49906bde1d0e0a03ff0c1061ff0)  
+
 ## ユーザーマイページ
- 
+ヘッダーのユーザー名から自分のマイページに遷移できる（クレジットカードを登録しないとマイページに入れないようになっている）  
+[![Image from Gyazo](https://i.gyazo.com/7f68e176a508f10978b773a6319780fa.gif)](https://gyazo.com/7f68e176a508f10978b773a6319780fa)  
+
+evett一覧とユーザー情報のタグがあり、前者は投稿したevettと入金したevettが表示されており、後者は３つの要素が表示されている  
+1. クレジットカード情報  
+登録したクレジットカード情報が表示される
+2. 友達一覧
+フォローしているユーザーとフォローされているユーザーが表示される  
+フォローしたユーザー
+3. 友達検索フォーム
+DBに登録されているユーザーの中から非同期で検索することができる  
+evett詳細ページのユーザー名、友達一覧のユーザー名、検索したユーザー名をクリックすることで他のユーザーのマイページに遷移することができる  
+先述のevett一覧とユーザー名の隣のフォローボタン（「フォローする」か「フォロー解除」）が表示されている  
+フォローボタンを押すとフォロー、もしくはフォロー解除ができる  
+
+[![Image from Gyazo](https://i.gyazo.com/39998023ae97b694e37ca4645503288b.gif)](https://gyazo.com/39998023ae97b694e37ca4645503288b)  
+
 # 実装予定の機能
 入金合計額、投稿合計額などのevett関連のデータの表示や出金機能の実装を予定。
 
@@ -97,7 +149,7 @@ https://evett.herokuapp.com/
 ・色々できるサービスはあるけど、それらができていないサービスは何か。  
 ・いかに既存のサービスで使われている要素を組み込んでストレスなく使用できるか。  
 ・今の自分の技術だけで作れそうなものか。
-こうした点を中心に工夫しました。
+こうした点を中心に工夫した。
 ## 直感的なビュー
 Evettのメニュー（編集、削除ボタン）を左上、入金状況をバーと右下のパーセンテージで表現した。evett一覧で表示する情報量のバランスに苦労した。  
 Javascriptを用いて、ヘッダーのタグで一覧表示された投稿を切り替えられるようにした。アクションが割り振られていないボタンや表示を極力省略し、どのボタンも何かしらの役割を持たせてある。

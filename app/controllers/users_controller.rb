@@ -12,9 +12,9 @@ class UsersController < ApplicationController
 
       customer = Payjp::Customer.retrieve(card.customer_token) # 先程のカード情報を元に、顧客情報を取得
       @card = customer.cards.first
-
-      @following_users = @user.following_user.order('created_at DESC')
-      @followed_users = @user.followed_user.order('created_at DESC')
+      
+      @following_users = @user.following_user.distinct.order('created_at DESC')
+      @followed_users = @user.followed_user.distinct.order('created_at DESC')
     end
   end
 
