@@ -4,11 +4,11 @@ const followList = () => {
   const followedArea = document.getElementById("followed-area");
   const followingArea = document.getElementById("following-area");
 
-    following.addEventListener('click', () => {
+    followed.addEventListener('click', () => {
       followedArea.setAttribute("style", "display:none;");
       followingArea.setAttribute("style", "display:block;");
     });
-    followed.addEventListener('click', () => {
+    following.addEventListener('click', () => {
       followingArea.setAttribute("style", "display:none;");
       followedArea.setAttribute("style", "display:block;");
     });
