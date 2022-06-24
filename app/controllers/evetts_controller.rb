@@ -29,8 +29,10 @@ class EvettsController < ApplicationController
     
     if @evett.share_area_id == 3
       redirect_to root_path unless @evett.user.id == current_user.id
-    elsif @evett.share_area_id == 2
-      redirect_to root_path if current_user.following_user.find_by(id: @evett.user.id) == nil
+    elsif @evett.share_area_id == 2 
+      if current_user.following_user.find_by(id: @evett.user.id) != nil
+        redirect_to root_path unless @evett.user.id == current_user.id
+      end
     end
   end
 
