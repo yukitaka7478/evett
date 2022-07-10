@@ -64,89 +64,149 @@
         <% elsif current_user.following_user.find_by(id: @user.id) == nil && pay.evett.share_area_id == 2 %>
         <% else %>
           <li class='evett_show_content'>
-              <div class='evett_area' >
-                <ul class='content_menu'>
-                  <% if pay.evett.user_id == current_user.id %>
-                    <li>
-                      <%= link_to "編集", edit_evett_path(pay.evett.id), method: :get %>
-                    </li>
-                    <li>
-                      <%= link_to "削除", evett_path(pay.evett.id), method: :delete %>
-                    </li>
-                  <% end %>
-                </ul>
-                <%= link_to evett_path(pay.evett.id) do %>
-                  <div class='main_content'>
-                    <div class='evett_name'>
-                      <h2><%= pay.evett.name %></h2>
-                    </div>
-                    <div class='evett_limit_date'>
-                      <% if pay.evett.limit_date.present? %>
-                        <h2>目標日：<%= pay.evett.limit_date %></h2>
-                      <% end %>
-                    </div>
-                    <div class='evett_price_back'>
-                      <h2 class="evett_price"><%= Payment.where(evett_id: pay.evett.id).sum(:pay) %>/<%= pay.evett.price %>円</h2>
-                      <% if Payment.where(evett_id: pay.evett.id).sum(:pay) * 100 / pay.evett.price >= 100 %>
-                        <div id="max_percentage", class='evett_price_bar' style="width: 100%;"></div>
+            <div class='evett_area' >
+              <ul class='content_menu'>
+                <% if pay.evett.user_id == current_user.id %>
+                  <li>
+                    <%= link_to "編集", edit_evett_path(pay.evett.id), method: :get %>
+                  </li>
+                  <li>
+                    <%= link_to "削除", evett_path(pay.evett.id), method: :delete %>
+                  </li>
+                <% end %>
+              </ul>
+              <%= link_to evett_path(pay.evett.id) do %>
+                <div class='main_content'>
+                  <div class='evett_name'>
+                    <h2><%= pay.evett.name %></h2>
+                  </div>
+                  <div class='evett_limit_date'>
+                    <% if pay.evett.limit_date.present? %>
+                      <h2>目標日：<%= pay.evett.limit_date %></h2>
+                    <% end %>
+                  </div>
+                  <div class='evett_price_back'>
+                    <h2 class="evett_price"><%= Payment.where(evett_id: pay.evett.id).sum(:pay) %>/<%= pay.evett.price %>円</h2>
+                    <% if Payment.where(evett_id: pay.evett.id).sum(:pay) * 100 / pay.evett.price >= 100 %>
+                      <div id="max_percentage", class='evett_price_bar' style="width: 100%;"></div>
+                    <% else %>
+                      <div class='evett_price_bar' style="width: <%=  Payment.where(evett_id: pay.evett.id).sum(:pay) * 100 / pay.evett.price %>%;"></div>
+                    <% end %>
+                  </div>
+                  <div class='payment_area'>
+                    <%= link_to evett_payments_path(pay.evett.id) do %>
+                      <div class='evett_payment_btn'>入金</div>
+                    <% end %>
+                    <div class='payment_percentage'>
+                      <% unless Payment.where(evett_id: pay.evett.id).sum(:pay) == 0 %>
+                        <h2><%=  Payment.where(evett_id: pay.evett.id).sum(:pay) * 100 / pay.evett.price %>%</h2>
                       <% else %>
-                        <div class='evett_price_bar' style="width: <%=  Payment.where(evett_id: pay.evett.id).sum(:pay) * 100 / pay.evett.price %>%;"></div>
+                        <h2>0%</h2>
                       <% end %>
-                    </div>
-                    <div class='payment_area'>
-                      <%= link_to evett_payments_path(pay.evett.id) do %>
-                        <div class='evett_payment_btn'>入金</div>
-                      <% end %>
-                      <div class='payment_percentage'>
-                        <% unless Payment.where(evett_id: pay.evett.id).sum(:pay) == 0 %>
-                          <h2><%=  Payment.where(evett_id: pay.evett.id).sum(:pay) * 100 / pay.evett.price %>%</h2>
-                        <% else %>
-                          <h2>0%</h2>
-                        <% end %>
-                      </div>
                     </div>
                   </div>
-                <% end %>
-              </div>
-            </li>
-          <% end %>
+                </div>
+              <% end %>
+            </div>
+          </li>
         <% end %>
-      </div>
-    </div>
-
-  <% if @user.id == current_user.id %>
-    <div class="user_area", id="user-info-area">
-      <div class="Card_area">
-        <div class="Card__title">
-          <h2>カード情報</h2>
-        </div>
-        <div class="Card_info">
-          【カード番号】
-          <br>
-          <%= "**** **** **** " + @card[:last4] %>
-          <%# カード番号の下4桁を取得 %>
-
-          <br>
-          【有効期限】
-          <br>
-          <%= @card[:exp_month] %>
-          <%# 有効期限の「月」を取得 %>
-          /
-          <%= @card[:exp_year] %><br>
-          <%# 有効期限の「年」を取得 %>
-        </div>
-        <div class="new-card-link">
-          <%= link_to '新しいカード情報を登録する', new_user_card_path(current_user)%>
-        </div>
-      </div>
-      <%= render 'friends/follow', user: @user %>
-      <%= form_with(url: search_users_path, local: true, method: :get, id: "search-form") do |f| %>
-        <%= f.text_field :nickname, placeholder: "ユーザーを検索する", id: "search-input" %>
-        <div id="result"></div>
-        <div>＊enterキーを押さないで下さい</div>
       <% end %>
     </div>
-  <% end %>
+  </div>
+
+    <% if @user.id == current_user.id %>
+      <div class="user_area", id="user-info-area">
+        <div class="Card_area">
+          <div class="Card__title">
+            <h2>カード情報</h2>
+          </div>
+          <div class="Card_info">
+            【カード番号】
+            <br>
+            <%= "**** **** **** " + @card[:last4] %>
+            <%# カード番号の下4桁を取得 %>
+
+            <br>
+            【有効期限】
+            <br>
+            <%= @card[:exp_month] %>
+            <%# 有効期限の「月」を取得 %>
+            /
+            <%= @card[:exp_year] %><br>
+            <%# 有効期限の「年」を取得 %>
+          </div>
+          <div class="new-card-link">
+            <%= link_to '新しいカード情報を登録する', new_user_card_path(current_user)%>
+          </div>
+        </div>
+        <%= render 'friends/follow', user: @user %>
+        <%= form_with(url: search_users_path, local: true, method: :get, id: "search-form") do |f| %>
+          <%= f.text_field :nickname, placeholder: "ユーザーを検索する", id: "search-input" %>
+          <div id="result"></div>
+          <div>＊enterキーを押さないで下さい</div>
+        <% end %>
+      </div>
+      <div class="user_area", id="user-rank-area">
+        <div class="Card_area">
+          <div class="Card__title">
+            <h2>ランク情報</h2>
+          </div>
+          <div class="Card_info">
+            <%if @user.rank_id == 1%>
+              <div>ブロンズランク</div>
+            <% elsif @user.rank_id == 2 %>
+              <div>シルバーランク</div>
+            <% elsif @user.rank_id == 3 %>
+              <div>ゴールドランク</div>
+            <% end %>
+          </div>
+          <div class="new-card-link">
+            ランク変更はこちらから
+          </div>
+        </div>
+        <div class="Card_area">
+          <div class="Card__title">
+            <%if @user.rank_id == 1%>
+              <div>ブロンズランク</div>
+            <% elsif @user.rank_id == 2 %>
+              <div>シルバーランク</div>
+            <% elsif @user.rank_id == 3 %>
+              <div>ゴールドランク</div>
+            <% end %>
+          </div>
+          <div class="Card_info">
+            <div>
+              <p>投稿数：
+              <%if @user.rank_id == 1%>
+                5個</p>
+              <% elsif @user.rank_id == 2 %>
+                25個</p>
+              <% elsif @user.rank_id == 3 %>
+                50個</p>
+              <% end %>
+            </div>
+            <div>
+              <p>フォロー人数：
+              <%if @user.rank_id == 1%>
+                10人</p>
+              <% elsif @user.rank_id == 2 %>
+                30人</p>
+              <% elsif @user.rank_id == 3 %>
+                100人</p>
+              <% end %>
+            </div>
+          </div>
+          <div class="new-card-link">
+            ランク変更はこちらから
+          </div>
+        </div>
+        <%= form_with(url: search_users_path, local: true, method: :get, id: "search-form") do |f| %>
+          <%= f.text_field :nickname, placeholder: "ユーザーを検索する", id: "search-input" %>
+          <div id="result"></div>
+          <div>＊enterキーを押さないで下さい</div>
+        <% end %>
+      </div>
+    <% end %>
 </div>
 
 <%= render "shared/footer" %>

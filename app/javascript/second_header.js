@@ -3,21 +3,24 @@ const secondHeader = () => {
   const listName = document.querySelectorAll(".list-name");  
   const userEvettList = document.getElementById("user-evett-list");
   const userInfoArea = document.getElementById("user-info-area");
+  const userRankArea = document.getElementById("user-rank-area");
 
   listName.forEach(function(list, index){
     list.addEventListener("click", function (){
       activeList.removeAttribute("id");
       list.setAttribute("id", "active-list");
       if(index == 0){
-        userEvettList.removeAttribute("style", "display:none;");
         userEvettList.setAttribute("style", "display:block;");
-        userInfoArea.removeAttribute("style", "display:flex;");
         userInfoArea.setAttribute("style", "display:none;");
-      }else{
-        userEvettList.removeAttribute("style", "display:block;");
+        userRankArea.setAttribute("style", "display:none;");
+      }else if(index == 1){
         userEvettList.setAttribute("style", "display:none;");
-        userInfoArea.removeAttribute("style", "display:none;");
         userInfoArea.setAttribute("style", "display:flex;");
+        userRankArea.setAttribute("style", "display:none;");
+      }else{
+        userEvettList.setAttribute("style", "display:none;");
+        userInfoArea.setAttribute("style", "display:none;");
+        userRankArea.setAttribute("style", "display:flex;");
       };
     });
   });

@@ -17,8 +17,30 @@ class EvettsController < ApplicationController
 
   def create
     @evett = Evett.new(evett_params)
-    if @evett.save
-      redirect_to root_path
+    evett_size = Evett.where(user_id: @evett.user_id).size
+    if @evett.valid?
+      if @evett.user.rank_id == 1 
+        if evett_size <= 5
+          @evett.save
+          redirect_to root_path, notice: "投稿を保存しました"
+        else
+          redirect_to root_path, notice: "ブロンズランクの投稿数は５までです"
+        end
+      elsif @evett.user.rank_id == 2
+        if evett_size <= 10
+          @evett.save
+          redirect_to root_path, notice: "投稿を保存しました"
+        else
+          redirect_to root_path, notice: "シルバーランクの投稿数は10までです"
+        end
+      elsif @evett.user.rank_id == 3
+        if evett_size <= 50
+          @evett.save
+          redirect_to root_path, notice: "投稿を保存しました"
+        else
+          redirect_to root_path, notice: "ゴールドランクの投稿数は50までです"
+        end
+      end
     else
       render :new
     end
